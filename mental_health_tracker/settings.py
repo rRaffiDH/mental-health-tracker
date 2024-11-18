@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-4=qdj&i^m7lpo!(!0v+-wv%j94&^oj_z!5o9$eqw%-lb+@1ws=
 PRODUCTION = os.getenv("PRODUCTION", False)
 DEBUG = not PRODUCTION
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "raffi-dary-mentalhealthtracker.pbp.cs.ui.ac.id"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "raffi-dary-mentalhealthtracker.pbp.cs.ui.ac.id", "10.0.2.2"]
 
 
 # Application definition
@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
+    'authentication',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -51,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'mental_health_tracker.urls'
@@ -132,3 +135,9 @@ else:
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CSRF_TRUSTED_ORIGINS = ["http://localhost","http://127.0.0.1","http://raffi-dary-mentalhealthtracker.pbp.cs.ui.ac.id", "https://raffi-dary-mentalhealthtracker.pbp.cs.ui.ac.id"]
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = 'None'
+SESSION_COOKIE_SAMESITE = 'None'
